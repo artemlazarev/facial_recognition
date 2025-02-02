@@ -19,9 +19,11 @@ knownNames = []
 # loop over the image paths
 for (i, imagePath) in enumerate(imagePaths):
 	# extract the person name from the image path
-	print("[INFO] processing image {}/{}".format(i + 1,
-		len(imagePaths)))
 	name = imagePath.split(os.path.sep)[-2]
+	currentFile = imagePath.split(os.path.sep)[-1]
+	print( " {}/{}".format(i + 1,
+		len(imagePaths)) , name , currentFile)
+	
 
 	# load the input image and convert it from RGB (OpenCV ordering)
 	# to dlib ordering (RGB)

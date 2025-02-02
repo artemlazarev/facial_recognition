@@ -1,6 +1,7 @@
 import cv2
+import os
 
-name = 'Caroline' #replace with your name
+name = 'polina ' #replace with your name
 
 cam = cv2.VideoCapture(0)
 
@@ -23,9 +24,12 @@ while True:
         break
     elif k%256 == 32:
         # SPACE pressed
-        img_name = "dataset/"+ name +"/image_{}.jpg".format(img_counter)
-        cv2.imwrite(img_name, frame)
-        print("{} written!".format(img_name))
+        img_name = os.path.join(os.path.expanduser('.'), "dataset", name ,"image_{}.jpg".format(img_counter))
+        saveResult = cv2.imwrite(img_name, frame)
+        if saveResult:
+            print("{} written!".format(img_name))
+        else:
+            print("Could not write {}".format(img_name))
         img_counter += 1
 
 cam.release()
